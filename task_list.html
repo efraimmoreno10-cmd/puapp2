@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puapp</title>
+</head>
+<body>
+    <h1>Puapp</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar tarea</button>
+        </form>
+        <h2>Tareas completadas</h2>
+      {% for task in completed_tasks %}
+      <ul>
+        <li>
+            <strong>{{ task.title }}</strong> - {{ task.description }}
+        </li>
+        
+        </ul>
+        {% empty %}
+        <li>No hay tareas guardadas.</li>
+      {% endfor %} 
+      <h2>Tareas pendientes</h2>
+      {% for task in incomplete_tasks %}
+      <ul>
+        <li>
+            <strong>{{ task.title }}</strong> - {{ task.description }}
+        </li>
+        
+        </ul>
+        {% empty %}
+        <li>No hay tareas guardadas.</li>
+      {% endfor %}  
+ 
+
+        
+</body>
+</html>
